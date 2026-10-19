@@ -1,0 +1,14 @@
+{
+  "collectCap": 50,
+  "pity": [
+    { "key": "epic", "tier": 3, "limit": 300 },
+    { "key": "rare", "tier": 2, "limit": 30 }
+  ],
+  "types": [
+    { "id": "common", "tier": 0, "rarity": "Common", "name": "มดงานทั่วไป", "weight": 70, "foodPerSec": 0.04, "color": "#4a4a4a", "scale": 0.5, "desc": "มดงานธรรมดาที่ขยันที่สุดในรัง ขาดใครไม่ได้เลย" },
+    { "id": "uncommon", "tier": 1, "rarity": "Uncommon", "name": "มดตัดใบไม้", "weight": 22, "foodPerSec": 0.12, "color": "#3fae49", "scale": 0.5, "desc": "แบกใบไม้ใหญ่กว่าตัวเองไปเลี้ยงฟาร์มเชื้อรา" },
+    { "id": "rare", "tier": 2, "rarity": "Rare", "name": "มดทหาร", "weight": 6, "foodPerSec": 0.4, "color": "#3b82f6", "scale": 0.58, "desc": "ขากรรไกรแข็งแรง เฝ้าปากทางเข้ารังทั้งวันทั้งคืน" },
+    { "id": "epic", "tier": 3, "rarity": "Epic", "name": "มดยักษ์", "weight": 1.8, "foodPerSec": 1.5, "color": "#a855f7", "scale": 0.72, "desc": "ตัวใหญ่ที่สุดในรัง ใครเห็นก็ต้องหลีกทางให้" },
+    { "id": "legendary", "tier": 4, "rarity": "Legendary", "name": "ราชินีสำรอง", "weight": 0.2, "foodPerSec": 8, "color": "#ffc21a", "scale": 0.65, "desc": "ผู้สืบสายเลือดแห่งอาณานิคม ปรากฏตัวนาน ๆ ครั้งเท่านั้น" }
+  ]
+}

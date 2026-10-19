@@ -1,0 +1,27 @@
+{
+  "golden": {
+    "firstDelaySec": [50, 90],
+    "intervalSec": [70, 140],
+    "lifeSec": 14,
+    "rewards": [
+      { "id": "bonus", "weight": 45, "incomeSec": 50, "minFood": 60 },
+      { "id": "frenzy", "weight": 25, "durationSec": 25, "mult": 3 },
+      { "id": "clickFrenzy", "weight": 20, "durationSec": 15, "mult": 10 },
+      { "id": "eggs", "weight": 10, "eggs": 4 }
+    ]
+  },
+  "weather": {
+    "clearSec": [240, 420],
+    "weights": { "rain": 40, "sun": 40, "wind": 20 },
+    "types": {
+      "rain": { "name": "ฝนตก", "icon": "🌧️", "durationSec": 75, "effect": "ไข่ออกเร็ว ×2", "eggRate": 2 },
+      "sun": { "name": "แดดจ้า", "icon": "☀️", "durationSec": 75, "effect": "รายได้อาหาร ×1.25", "income": 1.25 },
+      "wind": { "name": "ลมแรง", "icon": "💨", "durationSec": 60, "effect": "ผลเบอร์รี่ทองมาถี่ขึ้น ×2 แต่ศัตรูก็มาเร็วขึ้น ×2", "raidRate": 2, "goldenRate": 2 }
+    }
+  },
+  "skills": [
+    { "id": "eggBurst", "icon": "🥚", "name": "วางไข่รัว", "desc": "ราชินีวางไข่ทันที +6 ใบ", "cooldownSec": 150, "eggs": 6 },
+    { "id": "rally", "icon": "📣", "name": "ระดมพล", "desc": "พลังป้องกัน ×3 นาน 20 วินาที", "cooldownSec": 120, "durationSec": 20, "mult": 3 },
+    { "id": "frenzy", "icon": "🍯", "name": "ฟีโรโมนทอง", "desc": "รายได้อาหาร ×3 นาน 20 วินาที", "cooldownSec": 180, "durationSec": 20, "mult": 3 }
+  ]
+}

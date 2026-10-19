@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#4cc3ff" />
+    <meta name="description" content="เกม Clicker/Idle สร้างรังมดแบบ 3D: ฟักไข่สุ่มมดหายาก ขยายคลัง ป้องกันศัตรู วิจัย และก่อตั้งอาณานิคมใหม่" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9C%3C/text%3E%3C/svg%3E"
+    />
+    <title>Ant Colony</title>
+  </head>
+  <body>
+    <noscript>เกมนี้ต้องเปิด JavaScript ในเบราว์เซอร์จึงจะเล่นได้</noscript>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <div id="hud" class="panel">
+        <div class="hud-label">อาหาร</div>
+        <div class="hud-value">
+          <span class="hud-icon">🍓</span><span id="food-value">0</span><span class="hud-cap">/<span id="cap-value">800</span></span>
+        </div>
+        <div class="cap-bar"><div id="cap-fill"></div></div>
+        <div class="hud-rate"><span id="rate-value">0.0</span> / วินาที <span id="full-tag" class="full-tag hidden">คลังเต็ม!</span></div>
+        <div id="chips" class="chips"></div>
+      </div>
+
+      <div id="skills" class="skills hidden" role="group" aria-label="สกิลราชินี"></div>
+
+      <div id="raid-banner" class="raid-banner hidden" role="status">
+        <div class="raid-title"><span id="raid-text"></span></div>
+        <div class="raid-bar"><div id="raid-hp"></div></div>
+        <div class="raid-sub">
+          <span id="raid-power"></span>
+          <button id="raid-buy" class="buy-btn mini" type="button"></button>
+        </div>
+      </div>
+
+      <aside id="shop" class="panel">
+        <div class="tabs" role="tablist">
+          <button class="tab active" type="button" role="tab" data-tab="shop" aria-selected="true" title="รังมด">🏠<span class="tab-label"> รังมด</span></button>
+          <button class="tab" type="button" role="tab" data-tab="eggs" aria-selected="false" title="ไข่ & มด">
+            🥚<span class="tab-label"> ไข่</span> <span id="egg-badge" class="badge hidden"></span>
+          </button>
+          <button class="tab" type="button" role="tab" data-tab="book" aria-selected="false" title="สมุดสะสม">
+            📖<span class="tab-label"> สมุด</span> <span id="book-badge" class="badge hidden">!</span>
+          </button>
+          <button class="tab" type="button" role="tab" data-tab="missions" aria-selected="false" title="ภารกิจ">
+            🎯<span class="tab-label"> ภารกิจ</span> <span id="mission-badge" class="badge hidden"></span>
+          </button>
+          <button id="tab-research" class="tab hidden" type="button" role="tab" data-tab="research" aria-selected="false" title="ห้องวิจัย">
+            🔬<span class="tab-label"> วิจัย</span> <span id="research-badge" class="badge hidden"></span>
+          </button>
+          <button id="shop-toggle" type="button" aria-label="พับ/กางแผง" aria-expanded="true" title="พับ/กางแผง">▾</button>
+        </div>
+
+        <div id="pane-shop" role="tabpanel">
+          <div id="threat" class="threat"></div>
+          <div id="shop-list"></div>
+          <div id="prestige-card" class="prestige-card"></div>
+        </div>
+
+        <div id="pane-research" role="tabpanel" hidden>
+          <div class="book-head">
+            <div class="book-title">ห้องวิจัย <span id="research-progress"></span></div>
+            <div class="egg-progress"><div id="research-bar"></div></div>
+          </div>
+          <div id="research-active" class="research-active"></div>
+          <div id="research-list"></div>
+        </div>
+
+        <div id="pane-missions" role="tabpanel" hidden>
+          <div class="book-head">
+            <div class="book-title">ภารกิจ <span id="mission-progress"></span></div>
+            <div class="egg-progress"><div id="mission-bar"></div></div>
+          </div>
+          <div id="mission-list"></div>
+        </div>
+
+        <div id="pane-eggs" role="tabpanel" hidden>
+          <div class="egg-head">
+            <div class="egg-count">🥚 <span id="egg-count">0</span><span class="egg-cap">/<span id="egg-cap">30</span></span></div>
+            <div class="egg-progress"><div id="egg-bar"></div></div>
+            <div id="egg-next" class="egg-next"></div>
+          </div>
+          <div class="egg-actions">
+            <button id="hatch-one" class="buy-btn" type="button">ฟักไข่ ×1</button>
+            <button id="hatch-all" class="buy-btn alt" type="button">ฟักทั้งหมด</button>
+          </div>
+          <div id="hatch-result" class="hatch-result" aria-live="polite"></div>
+          <div id="pity-info" class="pity-info"></div>
+          <div id="ant-list"></div>
+          <div id="ant-total" class="ant-total"></div>
+        </div>
+
+        <div id="pane-book" role="tabpanel" hidden>
+          <div class="book-head">
+            <div class="book-title">สมุดสะสมมด <span id="book-progress"></span></div>
+            <div class="egg-progress"><div id="book-bar"></div></div>
+          </div>
+          <div id="book-grid"></div>
+        </div>
+
+        <div id="shop-foot">
+          <span id="save-status" aria-live="polite"></span>
+          <span class="foot-actions">
+            <button id="mute-btn" type="button" aria-pressed="false" aria-label="เปิด/ปิดเสียง">🔊</button>
+            <button id="reset-btn" type="button">รีเซ็ตเกม</button>
+          </span>
+        </div>
+      </aside>
+
+      <div id="hint" class="hint hidden">แตะที่ผลเบอร์รี่!</div>
+      <div id="floaters"></div>
+      <div id="toast" class="toast hidden" role="status"></div>
+      <div id="flash" aria-hidden="true"></div>
+      <div id="weather-tint" aria-hidden="true"></div>
+
+      <button id="fs-btn" type="button" aria-label="เต็มจอ">⛶</button>
+    </div>
+
+    <div id="welcome" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+      <div class="modal-card">
+        <div class="modal-emoji">🐜</div>
+        <h2 id="welcome-title">ยินดีต้อนรับกลับ!</h2>
+        <p id="welcome-text"></p>
+        <div class="modal-amount">🍓 +<span id="welcome-amount"></span></div>
+        <p id="welcome-eggs" class="modal-eggs"></p>
+        <p id="welcome-wasted" class="modal-wasted"></p>
+        <p id="welcome-research" class="modal-eggs"></p>
+        <p id="welcome-note" class="modal-note"></p>
+        <button id="welcome-ok" class="buy-btn" type="button">ตกลง</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

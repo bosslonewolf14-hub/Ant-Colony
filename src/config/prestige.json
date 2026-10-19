@@ -1,0 +1,8 @@
+{
+  "minFood": 200000,
+  "divisor": 200000,
+  "exponent": 0.5,
+  "jellyIncomeBonus": 0.2,
+  "jellyCapBonus": 0.1,
+  "keepUpgrades": ["lab", "queenSkills"]
+}

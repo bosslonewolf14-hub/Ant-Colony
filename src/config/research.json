@@ -1,0 +1,18 @@
+{
+  "branches": [
+    { "id": "eco", "name": "การหาอาหาร", "icon": "🍃" },
+    { "id": "breed", "name": "การเพาะพันธุ์", "icon": "🧬" },
+    { "id": "def", "name": "การป้องกัน", "icon": "🛡️" }
+  ],
+  "nodes": [
+    { "id": "eco1", "branch": "eco", "name": "หาอาหารเก่ง I", "desc": "รายได้อาหาร +20%", "cost": 3000, "timeSec": 45, "requires": null, "effect": { "kind": "food", "value": 0.2 } },
+    { "id": "eco2", "branch": "eco", "name": "หาอาหารเก่ง II", "desc": "รายได้อาหาร +30%", "cost": 25000, "timeSec": 120, "requires": "eco1", "effect": { "kind": "food", "value": 0.3 } },
+    { "id": "eco3", "branch": "eco", "name": "หาอาหารเก่ง III", "desc": "รายได้อาหาร +50%", "cost": 180000, "timeSec": 300, "requires": "eco2", "effect": { "kind": "food", "value": 0.5 } },
+    { "id": "brd1", "branch": "breed", "name": "ไข่ไว", "desc": "ราชินีวางไข่เร็วขึ้น ~18%", "cost": 4000, "timeSec": 60, "requires": null, "effect": { "kind": "eggInterval", "value": 0.85 } },
+    { "id": "brd2", "branch": "breed", "name": "โชคดี", "desc": "Luck +0.15 (โอกาสได้มดหายากสูงขึ้น)", "cost": 30000, "timeSec": 150, "requires": "brd1", "effect": { "kind": "luck", "value": 0.15 } },
+    { "id": "brd3", "branch": "breed", "name": "สายพันธุ์แท้", "desc": "การันตี Rare+ ลดจาก 30 เหลือ 24 ฟอง", "cost": 200000, "timeSec": 360, "requires": "brd2", "effect": { "kind": "pityRare", "value": 6 } },
+    { "id": "def1", "branch": "def", "name": "เกราะหนา", "desc": "พลังป้องกัน +25%", "cost": 3500, "timeSec": 60, "requires": null, "effect": { "kind": "warrior", "value": 0.25 } },
+    { "id": "def2", "branch": "def", "name": "เสบียงใต้ดิน", "desc": "อาหารที่ถูกขโมยตอนบุกลดลง 40%", "cost": 28000, "timeSec": 150, "requires": "def1", "effect": { "kind": "raidLoss", "value": 0.6 } },
+    { "id": "def3", "branch": "def", "name": "ชั้นเชิงราชินี", "desc": "คูลดาวน์สกิลราชินีสั้นลง 30%", "cost": 190000, "timeSec": 360, "requires": "def2", "effect": { "kind": "cooldown", "value": 0.7 } }
+  ]
+}

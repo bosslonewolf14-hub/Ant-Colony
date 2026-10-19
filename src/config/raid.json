@@ -1,0 +1,25 @@
+{
+  "firstDelaySec": 240,
+  "intervalSec": [150, 240],
+  "retryDelaySec": 60,
+  "approachSec": 8,
+  "fightTimeoutSec": 45,
+  "dpsPerPower": 4,
+  "stealFracPerAtkPerSec": 0.0006,
+  "maxLossFrac": 0.35,
+  "defeatLootFrac": 0.2,
+  "rewardIncomeSec": 25,
+  "rewardMinFood": 30,
+  "eggsPerWin": [1, 2],
+  "hpBaseMul": 1.5,
+  "hpGrowthAfterWave": 8,
+  "hpGrowthRate": 1.09,
+  "enemies": {
+    "termite": { "name": "ปลวก", "hp": 8, "atk": 0.3, "color": "#e8d8a8" },
+    "beetle": { "name": "ด้วง", "hp": 30, "atk": 1, "color": "#3f6ad8" },
+    "spider": { "name": "แมงมุม", "hp": 90, "atk": 2.5, "color": "#4a3a5a" },
+    "centipede": { "name": "ตะขาบ", "hp": 400, "atk": 7, "color": "#c0392b" }
+  },
+  "defensePerStoredAnt": { "rare": 0.25, "epic": 1, "legendary": 4 },
+  "storedDefenseCap": 6
+}

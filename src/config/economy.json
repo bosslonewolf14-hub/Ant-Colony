@@ -1,0 +1,90 @@
+{
+  "click": {
+    "basePower": 1
+  },
+  "save": {
+    "key": "ant-colony-save",
+    "version": 1,
+    "intervalSec": 10
+  },
+  "offline": {
+    "maxHours": 8,
+    "rate": 0.5,
+    "minSecondsToShow": 30
+  },
+  "eggs": {
+    "intervalSec": 8,
+    "cap": 30,
+    "startEggs": 2
+  },
+  "storage": {
+    "baseCap": 800,
+    "capGrowth": 3
+  },
+  "workers": {
+    "baseCost": 10,
+    "costGrowth": 1.15,
+    "foodPerSec": 0.8,
+    "maxVisible": 150
+  },
+  "warriors": {
+    "baseCost": 25,
+    "costGrowth": 1.18,
+    "power": 1,
+    "maxVisible": 14
+  },
+  "upgrades": {
+    "clickPower": {
+      "baseCost": 25,
+      "growth": 1.6,
+      "max": null,
+      "perLevel": 1
+    },
+    "antSpeed": {
+      "baseCost": 150,
+      "growth": 1.8,
+      "max": 14,
+      "perLevel": 0.2,
+      "visualPerLevel": 0.08
+    },
+    "eggSpeed": {
+      "baseCost": 120,
+      "growth": 1.7,
+      "max": 10,
+      "perLevel": 0.25
+    },
+    "luck": {
+      "baseCost": 200,
+      "growth": 1.9,
+      "max": 10,
+      "perLevel": 0.1
+    },
+    "storage": {
+      "baseCost": 300,
+      "growth": 3.1,
+      "max": 8
+    },
+    "barracks": {
+      "baseCost": 400,
+      "growth": 3,
+      "max": 3,
+      "perLevel": 0.4
+    },
+    "lab": {
+      "baseCost": 2000,
+      "growth": 1,
+      "max": 1
+    },
+    "queenSkills": {
+      "baseCost": 1000,
+      "growth": 8,
+      "max": 3
+    },
+    "fungusRoom": {
+      "baseCost": 600,
+      "growth": 1,
+      "max": 1,
+      "multiplier": 1.5
+    }
+  }
+}
